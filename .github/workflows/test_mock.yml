@@ -1,11 +1,11 @@
-name: test
+name: test-mocks
 
 on:
   push:
     branches: [main]
     paths:
-      - awstools/**
-      - .github/workflows/test.yml
+      - awstoolsmock/**
+      - .github/workflows/test_mock.yml
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           go-version: '^1.20'
           check-latest: true
           cache-dependency-path: subdir/go.sum
-      - name: Run tests for awstools
-        working-directory: ./awstools
+      - name: Run tests for awstoolsmock
+        working-directory: ./awstoolsmock
         run: go test ./...
   
