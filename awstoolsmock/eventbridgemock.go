@@ -18,12 +18,12 @@ type eventbridgeMockStruct struct {
 	]
 }
 
-type eventbridgeMock struct {
+type EventbridgeMock struct {
 	Mock eventbridgeMockStruct
 }
 
-func GetEventbridgeMock() *eventbridgeMock {
-	return &eventbridgeMock{
+func GetEventbridgeMock() *EventbridgeMock {
+	return &EventbridgeMock{
 		Mock: eventbridgeMockStruct{
 			PutEvents: gomock.GetMock[struct {
 				Ctx    context.Context
@@ -36,7 +36,7 @@ func GetEventbridgeMock() *eventbridgeMock {
 	}
 }
 
-func (e *eventbridgeMock) PutEvents(ctx context.Context, params *eventbridge.PutEventsInput, optFns ...func(*eventbridge.Options)) (*eventbridge.PutEventsOutput, error) {
+func (e *EventbridgeMock) PutEvents(ctx context.Context, params *eventbridge.PutEventsInput, optFns ...func(*eventbridge.Options)) (*eventbridge.PutEventsOutput, error) {
 	e.Mock.PutEvents.AddInput(
 		struct {
 			Ctx    context.Context
