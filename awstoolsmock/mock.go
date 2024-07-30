@@ -14,10 +14,11 @@ type awsToolMock[T any, U any] struct {
 func GetMock[T any, U any](generalError error) *awsToolMock[T, U] {
 	return &awsToolMock[T, U]{
 		generalError: generalError,
+		inputParams:  []T{},
 	}
 }
 
-func (mock *awsToolMock[T, U]) AddInput(i T) {
+func (mock *awsToolMock[T, U]) addInput(i T) {
 	if mock.inputParams == nil {
 		mock.inputParams = []T{}
 	}
@@ -27,6 +28,10 @@ func (mock *awsToolMock[T, U]) AddInput(i T) {
 
 func (mock awsToolMock[T, U]) GetInputs() []T {
 	return mock.inputParams
+}
+
+func (mock awsToolMock[T, U]) HaveBeenCalled() int {
+	return len(mock.inputParams)
 }
 
 func (mock awsToolMock[T, U]) GetInput(position int) T {
@@ -114,4 +119,9 @@ func (mock *awsToolMock[T, U]) GetNextResult() (*U, error) {
 	}
 
 	return x.Value, nil
+}
+
+func (mock *awsToolMock[T, U]) Reset() {
+	mock.returnValues = nil
+	mock.inputParams = []T{}
 }
