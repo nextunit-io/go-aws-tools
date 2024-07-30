@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.41.4
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.34.4
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.33.3
-	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730094733-871aeacb9a3e
+	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730100556-dad1087392b2
 	github.com/stretchr/testify v1.9.0
 )
 
