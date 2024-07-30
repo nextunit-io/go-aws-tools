@@ -43,6 +43,8 @@ github.com/jmespath/go-jmespath/internal/testify v1.5.1 h1:shLQSRRSCCPj3f2gpwzGw
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730073613-fa67f704f30a h1:xQ8hVqcK640dOpGS6sHsROZ0ObeZikpZm+tehidc8SE=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730073613-fa67f704f30a/go.mod h1:Nfayu91eieothREizui5okPv2WZgG/Fl9xQfwXxELjY=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730094733-871aeacb9a3e h1:6TjXMdX45xqlrHCt1pjc5zvBLworI+j8iJfQjuTOiso=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730094733-871aeacb9a3e/go.mod h1:/Z84065bDgHX4yuFr/LKyH37k5Rz5mpW1q9hHkhOnWQ=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
