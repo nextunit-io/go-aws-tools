@@ -54,7 +54,7 @@ func TestEventbridgeMockPutEvents(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("PutEvents general error"), err)
 
-		assert.Equal(t, 4, eventbridgeMock.Mock.PutEvents.HaveBeenCalled())
+		assert.Equal(t, 4, eventbridgeMock.Mock.PutEvents.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := eventbridgeMock.Mock.PutEvents.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)

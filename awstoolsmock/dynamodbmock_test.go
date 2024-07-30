@@ -56,7 +56,7 @@ func TestDynamodbMockGetItem(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("GetItem general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.GetItem.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.GetItem.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.GetItem.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -111,7 +111,7 @@ func TestDynamodbMockBatchWriteItem(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("BatchWriteItem general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.BatchWriteItem.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.BatchWriteItem.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.BatchWriteItem.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -162,7 +162,7 @@ func TestDynamodbMockPutItem(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("PutItem general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.PutItem.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.PutItem.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.PutItem.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -215,7 +215,7 @@ func TestDynamodbMockUpdateItem(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("UpdateItem general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.UpdateItem.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.UpdateItem.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.UpdateItem.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -268,7 +268,7 @@ func TestDynamodbMockDeleteItem(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("DeleteItem general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.DeleteItem.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.DeleteItem.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.DeleteItem.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -321,7 +321,7 @@ func TestDynamodbMockQuery(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("Query general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.Query.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.Query.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.Query.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -374,7 +374,7 @@ func TestDynamodbMockScan(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("Scan general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.Scan.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.Scan.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.Scan.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -421,7 +421,7 @@ func TestDynamodbMockDescribeTable(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("DescribeTable general error"), err)
 
-		assert.Equal(t, 4, dynamodbMock.Mock.DescribeTable.HaveBeenCalled())
+		assert.Equal(t, 4, dynamodbMock.Mock.DescribeTable.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := dynamodbMock.Mock.DescribeTable.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)

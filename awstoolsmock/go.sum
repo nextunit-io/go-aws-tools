@@ -26,6 +26,10 @@ github.com/jmespath/go-jmespath v0.4.0 h1:BEgLn5cpjn8UN1mAw4NjwDrS35OdebyEtFe+9Y
 github.com/jmespath/go-jmespath v0.4.0/go.mod h1:T8mJZnbsbmF+m6zOOFylbeCJqk5+pHWvzYPziyZiYoo=
 github.com/jmespath/go-jmespath/internal/testify v1.5.1 h1:shLQSRRSCCPj3f2gpwzGwWFoC7ycTf1rcQZHOlsJ6N8=
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
+github.com/nextunit-io/go-mock v0.0.0-20240730140617-7963b5347f46 h1:PhjaG10VmkI6XpEUrdQs+FbhI8RgdPc0tlMMj4a5Hgg=
+github.com/nextunit-io/go-mock v0.0.0-20240730140617-7963b5347f46/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
+github.com/nextunit-io/go-mock v0.0.0-20240730141616-1519c7a291ba h1:TduhpzlfKZc0SiXk0RjOoa3V8QfZ59NYijn99890oJc=
+github.com/nextunit-io/go-mock v0.0.0-20240730141616-1519c7a291ba/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

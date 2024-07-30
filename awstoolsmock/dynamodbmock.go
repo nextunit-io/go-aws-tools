@@ -5,59 +5,60 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	gomock "github.com/nextunit-io/go-mock"
 )
 
 type dynamodbMockStruct struct {
-	GetItem *awsToolMock[struct {
+	GetItem *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.GetItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.GetItemOutput,
 	]
-	BatchWriteItem *awsToolMock[struct {
+	BatchWriteItem *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.BatchWriteItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.BatchWriteItemOutput,
 	]
-	PutItem *awsToolMock[struct {
+	PutItem *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.PutItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.PutItemOutput,
 	]
-	UpdateItem *awsToolMock[struct {
+	UpdateItem *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.UpdateItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.UpdateItemOutput,
 	]
-	Query *awsToolMock[struct {
+	Query *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.QueryInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.QueryOutput,
 	]
-	Scan *awsToolMock[struct {
+	Scan *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.ScanInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.ScanOutput,
 	]
-	DeleteItem *awsToolMock[struct {
+	DeleteItem *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.DeleteItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.DeleteItemOutput,
 	]
-	DescribeTable *awsToolMock[struct {
+	DescribeTable *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.DescribeTableInput
 		OptFns []func(*dynamodb.Options)
@@ -74,7 +75,7 @@ func GetDynamodbMock() *dynamodbMock {
 	return &dynamodbMock{
 		Mock: dynamodbMockStruct{
 
-			GetItem: GetMock[struct {
+			GetItem: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.GetItemInput
 				OptFns []func(*dynamodb.Options)
@@ -82,7 +83,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.GetItemOutput,
 			](fmt.Errorf("GetItem general error")),
 
-			BatchWriteItem: GetMock[struct {
+			BatchWriteItem: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.BatchWriteItemInput
 				OptFns []func(*dynamodb.Options)
@@ -90,7 +91,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.BatchWriteItemOutput,
 			](fmt.Errorf("BatchWriteItem general error")),
 
-			PutItem: GetMock[struct {
+			PutItem: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.PutItemInput
 				OptFns []func(*dynamodb.Options)
@@ -98,7 +99,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.PutItemOutput,
 			](fmt.Errorf("PutItem general error")),
 
-			UpdateItem: GetMock[struct {
+			UpdateItem: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.UpdateItemInput
 				OptFns []func(*dynamodb.Options)
@@ -106,7 +107,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.UpdateItemOutput,
 			](fmt.Errorf("UpdateItem general error")),
 
-			Query: GetMock[struct {
+			Query: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.QueryInput
 				OptFns []func(*dynamodb.Options)
@@ -114,7 +115,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.QueryOutput,
 			](fmt.Errorf("Query general error")),
 
-			Scan: GetMock[struct {
+			Scan: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.ScanInput
 				OptFns []func(*dynamodb.Options)
@@ -122,7 +123,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.ScanOutput,
 			](fmt.Errorf("Scan general error")),
 
-			DeleteItem: GetMock[struct {
+			DeleteItem: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.DeleteItemInput
 				OptFns []func(*dynamodb.Options)
@@ -130,7 +131,7 @@ func GetDynamodbMock() *dynamodbMock {
 				dynamodb.DeleteItemOutput,
 			](fmt.Errorf("DeleteItem general error")),
 
-			DescribeTable: GetMock[struct {
+			DescribeTable: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *dynamodb.DescribeTableInput
 				OptFns []func(*dynamodb.Options)
@@ -142,7 +143,7 @@ func GetDynamodbMock() *dynamodbMock {
 }
 
 func (d *dynamodbMock) GetItem(ctx context.Context, params *dynamodb.GetItemInput, optFns ...func(options *dynamodb.Options)) (*dynamodb.GetItemOutput, error) {
-	d.Mock.GetItem.addInput(
+	d.Mock.GetItem.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.GetItemInput
@@ -157,7 +158,7 @@ func (d *dynamodbMock) GetItem(ctx context.Context, params *dynamodb.GetItemInpu
 	return d.Mock.GetItem.GetNextResult()
 }
 func (d *dynamodbMock) BatchWriteItem(ctx context.Context, params *dynamodb.BatchWriteItemInput, optFns ...func(*dynamodb.Options)) (*dynamodb.BatchWriteItemOutput, error) {
-	d.Mock.BatchWriteItem.addInput(
+	d.Mock.BatchWriteItem.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.BatchWriteItemInput
@@ -172,7 +173,7 @@ func (d *dynamodbMock) BatchWriteItem(ctx context.Context, params *dynamodb.Batc
 	return d.Mock.BatchWriteItem.GetNextResult()
 }
 func (d *dynamodbMock) PutItem(ctx context.Context, params *dynamodb.PutItemInput, optFns ...func(*dynamodb.Options)) (*dynamodb.PutItemOutput, error) {
-	d.Mock.PutItem.addInput(
+	d.Mock.PutItem.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.PutItemInput
@@ -187,7 +188,7 @@ func (d *dynamodbMock) PutItem(ctx context.Context, params *dynamodb.PutItemInpu
 	return d.Mock.PutItem.GetNextResult()
 }
 func (d *dynamodbMock) UpdateItem(ctx context.Context, params *dynamodb.UpdateItemInput, optFns ...func(*dynamodb.Options)) (*dynamodb.UpdateItemOutput, error) {
-	d.Mock.UpdateItem.addInput(
+	d.Mock.UpdateItem.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.UpdateItemInput
@@ -202,7 +203,7 @@ func (d *dynamodbMock) UpdateItem(ctx context.Context, params *dynamodb.UpdateIt
 	return d.Mock.UpdateItem.GetNextResult()
 }
 func (d *dynamodbMock) Query(ctx context.Context, params *dynamodb.QueryInput, optFns ...func(*dynamodb.Options)) (*dynamodb.QueryOutput, error) {
-	d.Mock.Query.addInput(
+	d.Mock.Query.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.QueryInput
@@ -217,7 +218,7 @@ func (d *dynamodbMock) Query(ctx context.Context, params *dynamodb.QueryInput, o
 	return d.Mock.Query.GetNextResult()
 }
 func (d *dynamodbMock) Scan(ctx context.Context, params *dynamodb.ScanInput, optFns ...func(*dynamodb.Options)) (*dynamodb.ScanOutput, error) {
-	d.Mock.Scan.addInput(
+	d.Mock.Scan.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.ScanInput
@@ -233,7 +234,7 @@ func (d *dynamodbMock) Scan(ctx context.Context, params *dynamodb.ScanInput, opt
 }
 
 func (d *dynamodbMock) DeleteItem(ctx context.Context, params *dynamodb.DeleteItemInput, optFns ...func(*dynamodb.Options)) (*dynamodb.DeleteItemOutput, error) {
-	d.Mock.DeleteItem.addInput(
+	d.Mock.DeleteItem.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.DeleteItemInput
@@ -249,7 +250,7 @@ func (d *dynamodbMock) DeleteItem(ctx context.Context, params *dynamodb.DeleteIt
 }
 
 func (d *dynamodbMock) DescribeTable(ctx context.Context, params *dynamodb.DescribeTableInput, optFns ...func(*dynamodb.Options)) (*dynamodb.DescribeTableOutput, error) {
-	d.Mock.DescribeTable.addInput(
+	d.Mock.DescribeTable.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *dynamodb.DescribeTableInput

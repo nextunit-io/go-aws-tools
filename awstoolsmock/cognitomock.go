@@ -5,38 +5,39 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider"
+	gomock "github.com/nextunit-io/go-mock"
 )
 
 type cognitoMockStruct struct {
-	CreateGroup *awsToolMock[struct {
+	CreateGroup *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.CreateGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.CreateGroupOutput,
 	]
-	ListUsersInGroup *awsToolMock[struct {
+	ListUsersInGroup *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.ListUsersInGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.ListUsersInGroupOutput,
 	]
-	AdminAddUserToGroup *awsToolMock[struct {
+	AdminAddUserToGroup *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.AdminAddUserToGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.AdminAddUserToGroupOutput,
 	]
-	ListUsers *awsToolMock[struct {
+	ListUsers *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.ListUsersInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.ListUsersOutput,
 	]
-	DescribeUserPool *awsToolMock[struct {
+	DescribeUserPool *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.DescribeUserPoolInput
 		OptFns []func(*cognitoidentityprovider.Options)
@@ -53,7 +54,7 @@ func GetCognitoMock() *cognitoMock {
 	return &cognitoMock{
 		Mock: cognitoMockStruct{
 
-			CreateGroup: GetMock[struct {
+			CreateGroup: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *cognitoidentityprovider.CreateGroupInput
 				OptFns []func(*cognitoidentityprovider.Options)
@@ -61,7 +62,7 @@ func GetCognitoMock() *cognitoMock {
 				cognitoidentityprovider.CreateGroupOutput,
 			](fmt.Errorf("CreateGroup general error")),
 
-			ListUsersInGroup: GetMock[struct {
+			ListUsersInGroup: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *cognitoidentityprovider.ListUsersInGroupInput
 				OptFns []func(*cognitoidentityprovider.Options)
@@ -69,7 +70,7 @@ func GetCognitoMock() *cognitoMock {
 				cognitoidentityprovider.ListUsersInGroupOutput,
 			](fmt.Errorf("ListUsersInGroup general error")),
 
-			AdminAddUserToGroup: GetMock[struct {
+			AdminAddUserToGroup: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *cognitoidentityprovider.AdminAddUserToGroupInput
 				OptFns []func(*cognitoidentityprovider.Options)
@@ -77,7 +78,7 @@ func GetCognitoMock() *cognitoMock {
 				cognitoidentityprovider.AdminAddUserToGroupOutput,
 			](fmt.Errorf("AdminAddUserToGroup general error")),
 
-			ListUsers: GetMock[struct {
+			ListUsers: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *cognitoidentityprovider.ListUsersInput
 				OptFns []func(*cognitoidentityprovider.Options)
@@ -85,7 +86,7 @@ func GetCognitoMock() *cognitoMock {
 				cognitoidentityprovider.ListUsersOutput,
 			](fmt.Errorf("ListUsers general error")),
 
-			DescribeUserPool: GetMock[struct {
+			DescribeUserPool: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *cognitoidentityprovider.DescribeUserPoolInput
 				OptFns []func(*cognitoidentityprovider.Options)
@@ -97,7 +98,7 @@ func GetCognitoMock() *cognitoMock {
 }
 
 func (c *cognitoMock) CreateGroup(ctx context.Context, params *cognitoidentityprovider.CreateGroupInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.CreateGroupOutput, error) {
-	c.Mock.CreateGroup.addInput(
+	c.Mock.CreateGroup.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *cognitoidentityprovider.CreateGroupInput
@@ -113,7 +114,7 @@ func (c *cognitoMock) CreateGroup(ctx context.Context, params *cognitoidentitypr
 }
 
 func (c *cognitoMock) ListUsersInGroup(ctx context.Context, params *cognitoidentityprovider.ListUsersInGroupInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListUsersInGroupOutput, error) {
-	c.Mock.ListUsersInGroup.addInput(
+	c.Mock.ListUsersInGroup.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *cognitoidentityprovider.ListUsersInGroupInput
@@ -129,7 +130,7 @@ func (c *cognitoMock) ListUsersInGroup(ctx context.Context, params *cognitoident
 }
 
 func (c *cognitoMock) AdminAddUserToGroup(ctx context.Context, params *cognitoidentityprovider.AdminAddUserToGroupInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.AdminAddUserToGroupOutput, error) {
-	c.Mock.AdminAddUserToGroup.addInput(
+	c.Mock.AdminAddUserToGroup.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *cognitoidentityprovider.AdminAddUserToGroupInput
@@ -145,7 +146,7 @@ func (c *cognitoMock) AdminAddUserToGroup(ctx context.Context, params *cognitoid
 }
 
 func (c *cognitoMock) ListUsers(ctx context.Context, params *cognitoidentityprovider.ListUsersInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListUsersOutput, error) {
-	c.Mock.ListUsers.addInput(
+	c.Mock.ListUsers.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *cognitoidentityprovider.ListUsersInput
@@ -161,7 +162,7 @@ func (c *cognitoMock) ListUsers(ctx context.Context, params *cognitoidentityprov
 }
 
 func (c *cognitoMock) DescribeUserPool(ctx context.Context, params *cognitoidentityprovider.DescribeUserPoolInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeUserPoolOutput, error) {
-	c.Mock.DescribeUserPool.addInput(
+	c.Mock.DescribeUserPool.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *cognitoidentityprovider.DescribeUserPoolInput

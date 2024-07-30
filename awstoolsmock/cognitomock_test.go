@@ -46,7 +46,7 @@ func TestCognitoMockCreateGroup(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("CreateGroup general error"), err)
 
-		assert.Equal(t, 4, cognitoMock.Mock.CreateGroup.HaveBeenCalled())
+		assert.Equal(t, 4, cognitoMock.Mock.CreateGroup.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := cognitoMock.Mock.CreateGroup.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -100,7 +100,7 @@ func TestCognitoMockListUsersInGroup(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("ListUsersInGroup general error"), err)
 
-		assert.Equal(t, 4, cognitoMock.Mock.ListUsersInGroup.HaveBeenCalled())
+		assert.Equal(t, 4, cognitoMock.Mock.ListUsersInGroup.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := cognitoMock.Mock.ListUsersInGroup.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -145,7 +145,7 @@ func TestCognitoMockAdminAddUserToGroup(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("AdminAddUserToGroup general error"), err)
 
-		assert.Equal(t, 4, cognitoMock.Mock.AdminAddUserToGroup.HaveBeenCalled())
+		assert.Equal(t, 4, cognitoMock.Mock.AdminAddUserToGroup.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := cognitoMock.Mock.AdminAddUserToGroup.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -197,7 +197,7 @@ func TestCognitoMockListUsers(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("ListUsers general error"), err)
 
-		assert.Equal(t, 4, cognitoMock.Mock.ListUsers.HaveBeenCalled())
+		assert.Equal(t, 4, cognitoMock.Mock.ListUsers.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := cognitoMock.Mock.ListUsers.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)
@@ -238,7 +238,7 @@ func TestCognitoMockDescribeUserPool(t *testing.T) {
 		assert.Nil(t, o)
 		assert.Equal(t, fmt.Errorf("DescribeUserPool general error"), err)
 
-		assert.Equal(t, 4, cognitoMock.Mock.DescribeUserPool.HaveBeenCalled())
+		assert.Equal(t, 4, cognitoMock.Mock.DescribeUserPool.HasBeenCalled())
 		for i := 0; i < 3; i++ {
 			input := cognitoMock.Mock.DescribeUserPool.GetInput(i)
 			assert.Equal(t, ctx, input.Ctx)

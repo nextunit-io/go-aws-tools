@@ -5,10 +5,11 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge"
+	gomock "github.com/nextunit-io/go-mock"
 )
 
 type eventbridgeMockStruct struct {
-	PutEvents *awsToolMock[struct {
+	PutEvents *gomock.AwsToolMock[struct {
 		Ctx    context.Context
 		Params *eventbridge.PutEventsInput
 		OptFns []func(*eventbridge.Options)
@@ -24,7 +25,7 @@ type eventbridgeMock struct {
 func GetEventbridgeMock() *eventbridgeMock {
 	return &eventbridgeMock{
 		Mock: eventbridgeMockStruct{
-			PutEvents: GetMock[struct {
+			PutEvents: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *eventbridge.PutEventsInput
 				OptFns []func(*eventbridge.Options)
@@ -36,7 +37,7 @@ func GetEventbridgeMock() *eventbridgeMock {
 }
 
 func (e *eventbridgeMock) PutEvents(ctx context.Context, params *eventbridge.PutEventsInput, optFns ...func(*eventbridge.Options)) (*eventbridge.PutEventsOutput, error) {
-	e.Mock.PutEvents.addInput(
+	e.Mock.PutEvents.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *eventbridge.PutEventsInput
