@@ -57,6 +57,13 @@ type dynamodbMockStruct struct {
 	},
 		dynamodb.DeleteItemOutput,
 	]
+	DescribeTable *awsToolMock[struct {
+		Ctx    context.Context
+		Params *dynamodb.DescribeTableInput
+		OptFns []func(*dynamodb.Options)
+	},
+		dynamodb.DescribeTableOutput,
+	]
 }
 
 type dynamodbMock struct {
@@ -122,6 +129,14 @@ func GetDynamodbMock() *dynamodbMock {
 			},
 				dynamodb.DeleteItemOutput,
 			](fmt.Errorf("DeleteItem general error")),
+
+			DescribeTable: GetMock[struct {
+				Ctx    context.Context
+				Params *dynamodb.DescribeTableInput
+				OptFns []func(*dynamodb.Options)
+			},
+				dynamodb.DescribeTableOutput,
+			](fmt.Errorf("DescribeTable general error")),
 		},
 	}
 }
@@ -216,6 +231,7 @@ func (d *dynamodbMock) Scan(ctx context.Context, params *dynamodb.ScanInput, opt
 
 	return d.Mock.Scan.GetNextResult()
 }
+
 func (d *dynamodbMock) DeleteItem(ctx context.Context, params *dynamodb.DeleteItemInput, optFns ...func(*dynamodb.Options)) (*dynamodb.DeleteItemOutput, error) {
 	d.Mock.DeleteItem.addInput(
 		struct {
@@ -230,4 +246,20 @@ func (d *dynamodbMock) DeleteItem(ctx context.Context, params *dynamodb.DeleteIt
 	)
 
 	return d.Mock.DeleteItem.GetNextResult()
+}
+
+func (d *dynamodbMock) DescribeTable(ctx context.Context, params *dynamodb.DescribeTableInput, optFns ...func(*dynamodb.Options)) (*dynamodb.DescribeTableOutput, error) {
+	d.Mock.DescribeTable.addInput(
+		struct {
+			Ctx    context.Context
+			Params *dynamodb.DescribeTableInput
+			OptFns []func(*dynamodb.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return d.Mock.DescribeTable.GetNextResult()
 }

@@ -388,3 +388,48 @@ func TestDynamodbMockScan(t *testing.T) {
 		assert.Equal(t, "test-tablename", *input.Params.TableName)
 	})
 }
+
+func TestDynamodbMockDescribeTable(t *testing.T) {
+	t.Helper()
+	dynamodbMock := awstoolsmock.GetDynamodbMock()
+	ctx := context.TODO()
+
+	t.Run("Testing DescribeTable", func(t *testing.T) {
+		output := dynamodb.DescribeTableOutput{
+			Table: &types.TableDescription{
+				ItemCount: aws.Int64(50),
+			},
+		}
+
+		dynamodbMock.Mock.DescribeTable.AddReturnValue(&output)
+		dynamodbMock.Mock.DescribeTable.AddReturnValue(&output)
+		dynamodbMock.Mock.DescribeTable.AddReturnValue(&output)
+
+		for i := 0; i < 3; i++ {
+			o, err := dynamodbMock.DescribeTable(ctx, &dynamodb.DescribeTableInput{
+				TableName: aws.String("test-tablename"),
+			})
+
+			assert.Nil(t, err)
+			assert.Equal(t, output, *o)
+		}
+
+		o, err := dynamodbMock.DescribeTable(ctx, &dynamodb.DescribeTableInput{
+			TableName: aws.String("test-tablename"),
+		})
+
+		assert.Nil(t, o)
+		assert.Equal(t, fmt.Errorf("DescribeTable general error"), err)
+
+		assert.Equal(t, 4, dynamodbMock.Mock.DescribeTable.HaveBeenCalled())
+		for i := 0; i < 3; i++ {
+			input := dynamodbMock.Mock.DescribeTable.GetInput(i)
+			assert.Equal(t, ctx, input.Ctx)
+			assert.Equal(t, "test-tablename", *input.Params.TableName)
+		}
+
+		input := dynamodbMock.Mock.DescribeTable.GetInput(3)
+		assert.Equal(t, ctx, input.Ctx)
+		assert.Equal(t, "test-tablename", *input.Params.TableName)
+	})
+}
