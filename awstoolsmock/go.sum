@@ -30,6 +30,8 @@ github.com/nextunit-io/go-mock v0.0.0-20240730140617-7963b5347f46 h1:PhjaG10VmkI
 github.com/nextunit-io/go-mock v0.0.0-20240730140617-7963b5347f46/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/nextunit-io/go-mock v0.0.0-20240730141616-1519c7a291ba h1:TduhpzlfKZc0SiXk0RjOoa3V8QfZ59NYijn99890oJc=
 github.com/nextunit-io/go-mock v0.0.0-20240730141616-1519c7a291ba/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
+github.com/nextunit-io/go-mock v0.0.0-20240730143511-1fd4c363446a h1:UKzg1U+oAYQkDm4P6izN4WI5AdsTXM8BuvYasGBwq+Q=
+github.com/nextunit-io/go-mock v0.0.0-20240730143511-1fd4c363446a/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

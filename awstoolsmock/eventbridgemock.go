@@ -9,7 +9,7 @@ import (
 )
 
 type eventbridgeMockStruct struct {
-	PutEvents *gomock.AwsToolMock[struct {
+	PutEvents *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *eventbridge.PutEventsInput
 		OptFns []func(*eventbridge.Options)

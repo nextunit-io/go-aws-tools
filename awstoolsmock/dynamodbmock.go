@@ -9,56 +9,56 @@ import (
 )
 
 type dynamodbMockStruct struct {
-	GetItem *gomock.AwsToolMock[struct {
+	GetItem *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.GetItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.GetItemOutput,
 	]
-	BatchWriteItem *gomock.AwsToolMock[struct {
+	BatchWriteItem *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.BatchWriteItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.BatchWriteItemOutput,
 	]
-	PutItem *gomock.AwsToolMock[struct {
+	PutItem *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.PutItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.PutItemOutput,
 	]
-	UpdateItem *gomock.AwsToolMock[struct {
+	UpdateItem *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.UpdateItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.UpdateItemOutput,
 	]
-	Query *gomock.AwsToolMock[struct {
+	Query *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.QueryInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.QueryOutput,
 	]
-	Scan *gomock.AwsToolMock[struct {
+	Scan *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.ScanInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.ScanOutput,
 	]
-	DeleteItem *gomock.AwsToolMock[struct {
+	DeleteItem *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.DeleteItemInput
 		OptFns []func(*dynamodb.Options)
 	},
 		dynamodb.DeleteItemOutput,
 	]
-	DescribeTable *gomock.AwsToolMock[struct {
+	DescribeTable *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *dynamodb.DescribeTableInput
 		OptFns []func(*dynamodb.Options)

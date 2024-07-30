@@ -9,35 +9,35 @@ import (
 )
 
 type cognitoMockStruct struct {
-	CreateGroup *gomock.AwsToolMock[struct {
+	CreateGroup *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.CreateGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.CreateGroupOutput,
 	]
-	ListUsersInGroup *gomock.AwsToolMock[struct {
+	ListUsersInGroup *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.ListUsersInGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.ListUsersInGroupOutput,
 	]
-	AdminAddUserToGroup *gomock.AwsToolMock[struct {
+	AdminAddUserToGroup *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.AdminAddUserToGroupInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.AdminAddUserToGroupOutput,
 	]
-	ListUsers *gomock.AwsToolMock[struct {
+	ListUsers *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.ListUsersInput
 		OptFns []func(*cognitoidentityprovider.Options)
 	},
 		cognitoidentityprovider.ListUsersOutput,
 	]
-	DescribeUserPool *gomock.AwsToolMock[struct {
+	DescribeUserPool *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.DescribeUserPoolInput
 		OptFns []func(*cognitoidentityprovider.Options)
