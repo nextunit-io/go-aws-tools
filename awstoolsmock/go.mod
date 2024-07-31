@@ -6,7 +6,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.41.4
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.34.4
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.33.3
-	github.com/nextunit-io/go-mock v0.0.0-20240730143511-1fd4c363446a
+	github.com/nextunit-io/go-mock v0.0.0-20240731051644-97d255a9a00e
 )
 
 require (
