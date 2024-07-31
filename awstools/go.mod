@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.41.4
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.34.4
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.33.3
-	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240730192328-fed44450dac4
+	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240731050751-de9ec3f952dd
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -28,7 +28,7 @@ require (
 	github.com/aws/smithy-go v1.20.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/nextunit-io/go-mock v0.0.0-20240731050352-a1c9576fe371 // indirect
+	github.com/nextunit-io/go-mock v0.0.0-20240731051644-97d255a9a00e // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
