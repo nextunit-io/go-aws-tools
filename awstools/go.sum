@@ -75,6 +75,8 @@ github.com/jmespath/go-jmespath/internal/testify v1.5.1 h1:shLQSRRSCCPj3f2gpwzGw
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240911153342-542a54575c51 h1:zjH96e9DZ1b9TKkboEQ+lD1Geyp84k14qBiER+IBpSo=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240911153342-542a54575c51/go.mod h1:vZ00v6k1WgBGKlX/q1o7aUhyASvAeveIU7FDsBFgXf4=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240930121559-23c6cfc49bdc h1:O3pSjiKlLxi86xNiUEwlgOMHzps48FkEnJn7SRMtzxA=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240930121559-23c6cfc49bdc/go.mod h1:te9/sVUcV/7bBFk2ussinxdkKDmfnlE/nchz9FxINxg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca h1:ePf7TQDoy4XvByRK1btYMCmXNEdN+WMZufJrRB5vkbg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
