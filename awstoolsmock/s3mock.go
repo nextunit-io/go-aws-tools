@@ -9,6 +9,13 @@ import (
 )
 
 type s3MockStruct struct {
+	GetObject *gomock.ToolMock[struct {
+		Ctx    context.Context
+		Params *s3.GetObjectInput
+		OptFns []func(*s3.Options)
+	},
+		s3.GetObjectOutput,
+	]
 	PutObject *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *s3.PutObjectInput
@@ -25,6 +32,13 @@ type S3Mock struct {
 func GetS3Mock() *S3Mock {
 	return &S3Mock{
 		Mock: s3MockStruct{
+			GetObject: gomock.GetMock[struct {
+				Ctx    context.Context
+				Params *s3.GetObjectInput
+				OptFns []func(*s3.Options)
+			},
+				s3.GetObjectOutput,
+			](fmt.Errorf("GetObject general error")),
 			PutObject: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *s3.PutObjectInput
@@ -34,6 +48,22 @@ func GetS3Mock() *S3Mock {
 			](fmt.Errorf("PutObject general error")),
 		},
 	}
+}
+
+func (mock *S3Mock) GetObject(ctx context.Context, params *s3.GetObjectInput, optFns ...func(*s3.Options)) (*s3.GetObjectOutput, error) {
+	mock.Mock.GetObject.AddInput(
+		struct {
+			Ctx    context.Context
+			Params *s3.GetObjectInput
+			OptFns []func(*s3.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return mock.Mock.GetObject.GetNextResult()
 }
 
 func (mock *S3Mock) PutObject(ctx context.Context, params *s3.PutObjectInput, optFns ...func(*s3.Options)) (*s3.PutObjectOutput, error) {
