@@ -77,6 +77,8 @@ github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240911153342-542a54575
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240911153342-542a54575c51/go.mod h1:vZ00v6k1WgBGKlX/q1o7aUhyASvAeveIU7FDsBFgXf4=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240930121559-23c6cfc49bdc h1:O3pSjiKlLxi86xNiUEwlgOMHzps48FkEnJn7SRMtzxA=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240930121559-23c6cfc49bdc/go.mod h1:te9/sVUcV/7bBFk2ussinxdkKDmfnlE/nchz9FxINxg=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20241001073747-b6b491eabd35 h1:pB8KyNk5E/CV2+JnN6pzktRzGpjIWWEcFO24wRonTuM=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20241001073747-b6b491eabd35/go.mod h1:te9/sVUcV/7bBFk2ussinxdkKDmfnlE/nchz9FxINxg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca h1:ePf7TQDoy4XvByRK1btYMCmXNEdN+WMZufJrRB5vkbg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

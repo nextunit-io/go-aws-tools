@@ -10,7 +10,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.34.3
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.63.3
 	github.com/aws/aws-sdk-go-v2/service/sfn v1.32.3
-	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20240930121559-23c6cfc49bdc
+	github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20241001073747-b6b491eabd35
 	github.com/stretchr/testify v1.9.0
 )
 
