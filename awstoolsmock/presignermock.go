@@ -34,7 +34,7 @@ type presignMockStruct struct {
 	PresignPostObject *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *s3.PutObjectInput
-		OptFns []func(*s3.PresignOptions)
+		OptFns []func(*s3.PresignPostOptions)
 	},
 		v4.PresignedHTTPRequest,
 	]
@@ -71,7 +71,7 @@ func GetPresignerMock() *PresignMock {
 			PresignPostObject: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *s3.PutObjectInput
-				OptFns []func(*s3.PresignOptions)
+				OptFns []func(*s3.PresignPostOptions)
 			},
 				v4.PresignedHTTPRequest,
 			](fmt.Errorf("PresignPostObject general error")),
@@ -127,12 +127,12 @@ func (p *PresignMock) PresignPutObject(ctx context.Context, params *s3.PutObject
 	return p.Mock.PresignPutObject.GetNextResult()
 }
 
-func (p *PresignMock) PresignPostObject(ctx context.Context, params *s3.PutObjectInput, optFns ...func(*s3.PresignOptions)) (*v4.PresignedHTTPRequest, error) {
+func (p *PresignMock) PresignPostObject(ctx context.Context, params *s3.PutObjectInput, optFns ...func(*s3.PresignPostOptions)) (*v4.PresignedHTTPRequest, error) {
 	p.Mock.PresignPostObject.AddInput(
 		struct {
 			Ctx    context.Context
 			Params *s3.PutObjectInput
-			OptFns []func(*s3.PresignOptions)
+			OptFns []func(*s3.PresignPostOptions)
 		}{
 			Ctx:    ctx,
 			Params: params,
