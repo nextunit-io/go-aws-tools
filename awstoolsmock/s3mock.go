@@ -23,6 +23,13 @@ type s3MockStruct struct {
 	},
 		s3.PutObjectOutput,
 	]
+	DeleteObject *gomock.ToolMock[struct {
+		Ctx    context.Context
+		Params *s3.DeleteObjectInput
+		OptFns []func(*s3.Options)
+	},
+		s3.DeleteObjectOutput,
+	]
 }
 
 type S3Mock struct {
@@ -46,6 +53,13 @@ func GetS3Mock() *S3Mock {
 			},
 				s3.PutObjectOutput,
 			](fmt.Errorf("PutObject general error")),
+			DeleteObject: gomock.GetMock[struct {
+				Ctx    context.Context
+				Params *s3.DeleteObjectInput
+				OptFns []func(*s3.Options)
+			},
+				s3.DeleteObjectOutput,
+			](fmt.Errorf("DeleteObject general error")),
 		},
 	}
 }
@@ -80,4 +94,20 @@ func (mock *S3Mock) PutObject(ctx context.Context, params *s3.PutObjectInput, op
 	)
 
 	return mock.Mock.PutObject.GetNextResult()
+}
+
+func (mock *S3Mock) DeleteObject(ctx context.Context, params *s3.DeleteObjectInput, optFns ...func(*s3.Options)) (*s3.DeleteObjectOutput, error) {
+	mock.Mock.DeleteObject.AddInput(
+		struct {
+			Ctx    context.Context
+			Params *s3.DeleteObjectInput
+			OptFns []func(*s3.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return mock.Mock.DeleteObject.GetNextResult()
 }
