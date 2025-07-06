@@ -160,6 +160,96 @@ func TestCognitoMockAdminAddUserToGroup(t *testing.T) {
 	})
 }
 
+func TestCognitoMockAdminCreateUser(t *testing.T) {
+	t.Helper()
+	cognitoMock := awstoolsmock.GetCognitoMock()
+	ctx := context.TODO()
+
+	t.Run("Testing AdminCreateUser", func(t *testing.T) {
+		output := cognitoidentityprovider.AdminCreateUserOutput{}
+
+		cognitoMock.Mock.AdminCreateUser.AddReturnValue(&output)
+		cognitoMock.Mock.AdminCreateUser.AddReturnValue(&output)
+		cognitoMock.Mock.AdminCreateUser.AddReturnValue(&output)
+
+		for i := 0; i < 3; i++ {
+			o, err := cognitoMock.AdminCreateUser(ctx, &cognitoidentityprovider.AdminCreateUserInput{
+				Username:   aws.String(fmt.Sprintf("test-username-%d", i)),
+				UserPoolId: aws.String("test-userpool-id"),
+			})
+
+			assert.Nil(t, err)
+			assert.Equal(t, output, *o)
+		}
+
+		o, err := cognitoMock.AdminCreateUser(ctx, &cognitoidentityprovider.AdminCreateUserInput{
+			Username:   aws.String("test-username-error"),
+			UserPoolId: aws.String("test-userpool-id"),
+		})
+
+		assert.Nil(t, o)
+		assert.Equal(t, fmt.Errorf("AdminCreateUser general error"), err)
+
+		assert.Equal(t, 4, cognitoMock.Mock.AdminCreateUser.HasBeenCalled())
+		for i := 0; i < 3; i++ {
+			input := cognitoMock.Mock.AdminCreateUser.GetInput(i)
+			assert.Equal(t, ctx, input.Ctx)
+			assert.Equal(t, fmt.Sprintf("test-username-%d", i), *input.Params.Username)
+			assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+		}
+
+		input := cognitoMock.Mock.AdminCreateUser.GetInput(3)
+		assert.Equal(t, ctx, input.Ctx)
+		assert.Equal(t, "test-username-error", *input.Params.Username)
+		assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+	})
+}
+
+func TestCognitoMockAdminDeleteUser(t *testing.T) {
+	t.Helper()
+	cognitoMock := awstoolsmock.GetCognitoMock()
+	ctx := context.TODO()
+
+	t.Run("Testing AdminDeleteUser", func(t *testing.T) {
+		output := cognitoidentityprovider.AdminDeleteUserOutput{}
+
+		cognitoMock.Mock.AdminDeleteUser.AddReturnValue(&output)
+		cognitoMock.Mock.AdminDeleteUser.AddReturnValue(&output)
+		cognitoMock.Mock.AdminDeleteUser.AddReturnValue(&output)
+
+		for i := 0; i < 3; i++ {
+			o, err := cognitoMock.AdminDeleteUser(ctx, &cognitoidentityprovider.AdminDeleteUserInput{
+				Username:   aws.String(fmt.Sprintf("test-username-%d", i)),
+				UserPoolId: aws.String("test-userpool-id"),
+			})
+
+			assert.Nil(t, err)
+			assert.Equal(t, output, *o)
+		}
+
+		o, err := cognitoMock.AdminDeleteUser(ctx, &cognitoidentityprovider.AdminDeleteUserInput{
+			Username:   aws.String("test-username-error"),
+			UserPoolId: aws.String("test-userpool-id"),
+		})
+
+		assert.Nil(t, o)
+		assert.Equal(t, fmt.Errorf("AdminDeleteUser general error"), err)
+
+		assert.Equal(t, 4, cognitoMock.Mock.AdminDeleteUser.HasBeenCalled())
+		for i := 0; i < 3; i++ {
+			input := cognitoMock.Mock.AdminDeleteUser.GetInput(i)
+			assert.Equal(t, ctx, input.Ctx)
+			assert.Equal(t, fmt.Sprintf("test-username-%d", i), *input.Params.Username)
+			assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+		}
+
+		input := cognitoMock.Mock.AdminDeleteUser.GetInput(3)
+		assert.Equal(t, ctx, input.Ctx)
+		assert.Equal(t, "test-username-error", *input.Params.Username)
+		assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+	})
+}
+
 func TestCognitoMockAdminListGroupsForUser(t *testing.T) {
 	t.Helper()
 	cognitoMock := awstoolsmock.GetCognitoMock()
