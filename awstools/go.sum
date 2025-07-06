@@ -152,6 +152,8 @@ github.com/aws/aws-sdk-go-v2/service/s3 v1.69.0 h1:Q2ax8S21clKOnHhhr933xm3JxdJeb
 github.com/aws/aws-sdk-go-v2/service/s3 v1.69.0/go.mod h1:ralv4XawHjEMaHOWnTFushl0WRqim/gQWesAMF6hTow=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.82.0 h1:JubM8CGDDFaAOmBrd8CRYNr49ZNgEAiLwGwgNMdS0nw=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.82.0/go.mod h1:kUklwasNoCn5YpyAqC/97r6dzTA1SRKJfKq16SXeoDU=
+github.com/aws/aws-sdk-go-v2/service/s3 v1.83.0 h1:5Y75q0RPQoAbieyOuGLhjV9P3txvYgXv2lg0UwJOfmE=
+github.com/aws/aws-sdk-go-v2/service/s3 v1.83.0/go.mod h1:kUklwasNoCn5YpyAqC/97r6dzTA1SRKJfKq16SXeoDU=
 github.com/aws/aws-sdk-go-v2/service/sfn v1.31.2 h1:iup9+EgS++bWOyG5wx4rjnsfnCAv+xpqQdTsG61rUS8=
 github.com/aws/aws-sdk-go-v2/service/sfn v1.31.2/go.mod h1:ae7mWKnnn7j/l9Egr8HaUg9hsn6b4jIS7eryh3nqkLg=
 github.com/aws/aws-sdk-go-v2/service/sfn v1.32.3 h1:4HoibwG6AcWIG8uKlV7cQ0+gVzQkL8/+nxG2ov9Zdms=
@@ -223,6 +225,8 @@ github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20241201132339-0d467a13a
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20241201132339-0d467a13ad76/go.mod h1:Q5KOpcHwaygbHcfoqrzb9OwFNywlHG56rTrU52TUHpI=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20250701073424-0c82f24ef4c7 h1:RzLJ4AiZzLa1Q7KQLk4SyKnIYIsms9j1Kf1GtohwFjU=
 github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20250701073424-0c82f24ef4c7/go.mod h1:IGezyU1xQddDLQiTemSa+BzxD7FRHOOlAkkJSBzi6hg=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20250706150555-cf10d5d0b45a h1:AnyOyMp9YewiPmOCU4CBhvLDUGg2xPzJNYHEMPh/Hzg=
+github.com/nextunit-io/go-aws-tools/awstoolsmock v0.0.0-20250706150555-cf10d5d0b45a/go.mod h1:IGezyU1xQddDLQiTemSa+BzxD7FRHOOlAkkJSBzi6hg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca h1:ePf7TQDoy4XvByRK1btYMCmXNEdN+WMZufJrRB5vkbg=
 github.com/nextunit-io/go-mock v0.0.0-20240911152234-c0b0103a4eca/go.mod h1:kecyE7VJ/Cou30y3bWP0trAEXYJ+5hUun/5/2NUue0E=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
