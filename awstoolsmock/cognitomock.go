@@ -30,6 +30,13 @@ type cognitoMockStruct struct {
 	},
 		cognitoidentityprovider.AdminDeleteUserOutput,
 	]
+	AdminGetUser *gomock.ToolMock[struct {
+		Ctx    context.Context
+		Params *cognitoidentityprovider.AdminGetUserInput
+		OptFns []func(*cognitoidentityprovider.Options)
+	},
+		cognitoidentityprovider.AdminGetUserOutput,
+	]
 	AdminListGroupsForUser *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.AdminListGroupsForUserInput
@@ -98,6 +105,14 @@ func GetCognitoMock() *CognitoMock {
 			},
 				cognitoidentityprovider.AdminDeleteUserOutput,
 			](fmt.Errorf("AdminDeleteUser general error")),
+
+			AdminGetUser: gomock.GetMock[struct {
+				Ctx    context.Context
+				Params *cognitoidentityprovider.AdminGetUserInput
+				OptFns []func(*cognitoidentityprovider.Options)
+			},
+				cognitoidentityprovider.AdminGetUserOutput,
+			](fmt.Errorf("AdminGetUser general error")),
 
 			AdminListGroupsForUser: gomock.GetMock[struct {
 				Ctx    context.Context
@@ -188,6 +203,22 @@ func (c *CognitoMock) AdminDeleteUser(ctx context.Context, params *cognitoidenti
 	)
 
 	return c.Mock.AdminDeleteUser.GetNextResult()
+}
+
+func (c *CognitoMock) AdminGetUser(ctx context.Context, params *cognitoidentityprovider.AdminGetUserInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.AdminGetUserOutput, error) {
+	c.Mock.AdminGetUser.AddInput(
+		struct {
+			Ctx    context.Context
+			Params *cognitoidentityprovider.AdminGetUserInput
+			OptFns []func(*cognitoidentityprovider.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return c.Mock.AdminGetUser.GetNextResult()
 }
 
 func (c *CognitoMock) AdminListGroupsForUser(ctx context.Context, params *cognitoidentityprovider.AdminListGroupsForUserInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.AdminListGroupsForUserOutput, error) {
