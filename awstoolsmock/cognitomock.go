@@ -44,6 +44,13 @@ type cognitoMockStruct struct {
 	},
 		cognitoidentityprovider.AdminListGroupsForUserOutput,
 	]
+	AdminRemoveUserFromGroup *gomock.ToolMock[struct {
+		Ctx    context.Context
+		Params *cognitoidentityprovider.AdminRemoveUserFromGroupInput
+		OptFns []func(*cognitoidentityprovider.Options)
+	},
+		cognitoidentityprovider.AdminRemoveUserFromGroupOutput,
+	]
 	CreateGroup *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *cognitoidentityprovider.CreateGroupInput
@@ -121,6 +128,14 @@ func GetCognitoMock() *CognitoMock {
 			},
 				cognitoidentityprovider.AdminListGroupsForUserOutput,
 			](fmt.Errorf("AdminListGroupsForUser general error")),
+
+			AdminRemoveUserFromGroup: gomock.GetMock[struct {
+				Ctx    context.Context
+				Params *cognitoidentityprovider.AdminRemoveUserFromGroupInput
+				OptFns []func(*cognitoidentityprovider.Options)
+			},
+				cognitoidentityprovider.AdminRemoveUserFromGroupOutput,
+			](fmt.Errorf("AdminRemoveUserFromGroup general error")),
 
 			CreateGroup: gomock.GetMock[struct {
 				Ctx    context.Context
@@ -235,6 +250,22 @@ func (c *CognitoMock) AdminListGroupsForUser(ctx context.Context, params *cognit
 	)
 
 	return c.Mock.AdminListGroupsForUser.GetNextResult()
+}
+
+func (c *CognitoMock) AdminRemoveUserFromGroup(ctx context.Context, params *cognitoidentityprovider.AdminRemoveUserFromGroupInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.AdminRemoveUserFromGroupOutput, error) {
+	c.Mock.AdminRemoveUserFromGroup.AddInput(
+		struct {
+			Ctx    context.Context
+			Params *cognitoidentityprovider.AdminRemoveUserFromGroupInput
+			OptFns []func(*cognitoidentityprovider.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return c.Mock.AdminRemoveUserFromGroup.GetNextResult()
 }
 
 func (c *CognitoMock) CreateGroup(ctx context.Context, params *cognitoidentityprovider.CreateGroupInput, optFns ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.CreateGroupOutput, error) {

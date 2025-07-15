@@ -340,6 +340,51 @@ func TestCognitoMockAdminListGroupsForUser(t *testing.T) {
 	})
 }
 
+func TestCognitoMockAdminRemoveUserFromGroup(t *testing.T) {
+	t.Helper()
+	cognitoMock := awstoolsmock.GetCognitoMock()
+	ctx := context.TODO()
+
+	t.Run("Testing AdminRemoveUserFromGroup", func(t *testing.T) {
+		output := cognitoidentityprovider.AdminRemoveUserFromGroupOutput{}
+
+		cognitoMock.Mock.AdminRemoveUserFromGroup.AddReturnValue(&output)
+		cognitoMock.Mock.AdminRemoveUserFromGroup.AddReturnValue(&output)
+		cognitoMock.Mock.AdminRemoveUserFromGroup.AddReturnValue(&output)
+
+		for i := 0; i < 3; i++ {
+			o, err := cognitoMock.AdminRemoveUserFromGroup(ctx, &cognitoidentityprovider.AdminRemoveUserFromGroupInput{
+				Username:   aws.String(fmt.Sprintf("test-username-%d", i)),
+				UserPoolId: aws.String("test-userpool-id"),
+			})
+
+			assert.Nil(t, err)
+			assert.Equal(t, output, *o)
+		}
+
+		o, err := cognitoMock.AdminRemoveUserFromGroup(ctx, &cognitoidentityprovider.AdminRemoveUserFromGroupInput{
+			Username:   aws.String("test-username-error"),
+			UserPoolId: aws.String("test-userpool-id"),
+		})
+
+		assert.Nil(t, o)
+		assert.Equal(t, fmt.Errorf("AdminRemoveUserFromGroup general error"), err)
+
+		assert.Equal(t, 4, cognitoMock.Mock.AdminRemoveUserFromGroup.HasBeenCalled())
+		for i := 0; i < 3; i++ {
+			input := cognitoMock.Mock.AdminRemoveUserFromGroup.GetInput(i)
+			assert.Equal(t, ctx, input.Ctx)
+			assert.Equal(t, fmt.Sprintf("test-username-%d", i), *input.Params.Username)
+			assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+		}
+
+		input := cognitoMock.Mock.AdminRemoveUserFromGroup.GetInput(3)
+		assert.Equal(t, ctx, input.Ctx)
+		assert.Equal(t, "test-username-error", *input.Params.Username)
+		assert.Equal(t, "test-userpool-id", *input.Params.UserPoolId)
+	})
+}
+
 func TestCognitoMockListUsers(t *testing.T) {
 	t.Helper()
 	cognitoMock := awstoolsmock.GetCognitoMock()
