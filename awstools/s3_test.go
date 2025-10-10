@@ -17,7 +17,7 @@ func TestSetS3Client(t *testing.T) {
 }
 
 func TestWillSetupS3ClientWithoutSettingIt(t *testing.T) {
-	awstools.SetEventBridgeInstance(nil)
+	awstools.SetS3Instance(nil)
 
 	assert.NotNil(t, awstools.GetS3Instance())
 }
