@@ -16,6 +16,13 @@ type s3MockStruct struct {
 	},
 		s3.GetObjectOutput,
 	]
+	HeadObject *gomock.ToolMock[struct {
+		Ctx    context.Context
+		Params *s3.HeadObjectInput
+		OptFns []func(*s3.Options)
+	},
+		s3.HeadObjectOutput,
+	]
 	ListObjectsV2 *gomock.ToolMock[struct {
 		Ctx    context.Context
 		Params *s3.ListObjectsV2Input
@@ -53,6 +60,13 @@ func GetS3Mock() *S3Mock {
 			},
 				s3.GetObjectOutput,
 			](fmt.Errorf("GetObject general error")),
+			HeadObject: gomock.GetMock[struct {
+				Ctx    context.Context
+				Params *s3.HeadObjectInput
+				OptFns []func(*s3.Options)
+			},
+				s3.HeadObjectOutput,
+			](fmt.Errorf("HeadObject general error")),
 			ListObjectsV2: gomock.GetMock[struct {
 				Ctx    context.Context
 				Params *s3.ListObjectsV2Input
@@ -92,6 +106,22 @@ func (mock *S3Mock) GetObject(ctx context.Context, params *s3.GetObjectInput, op
 	)
 
 	return mock.Mock.GetObject.GetNextResult()
+}
+
+func (mock *S3Mock) HeadObject(ctx context.Context, params *s3.HeadObjectInput, optFns ...func(*s3.Options)) (*s3.HeadObjectOutput, error) {
+	mock.Mock.HeadObject.AddInput(
+		struct {
+			Ctx    context.Context
+			Params *s3.HeadObjectInput
+			OptFns []func(*s3.Options)
+		}{
+			Ctx:    ctx,
+			Params: params,
+			OptFns: optFns,
+		},
+	)
+
+	return mock.Mock.HeadObject.GetNextResult()
 }
 
 func (mock *S3Mock) ListObjectsV2(ctx context.Context, params *s3.ListObjectsV2Input, optFns ...func(*s3.Options)) (*s3.ListObjectsV2Output, error) {
